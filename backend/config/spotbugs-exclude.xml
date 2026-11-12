@@ -7,4 +7,9 @@
 
      Unlike the baseline, this file may grow, but every entry is a reviewed decision. -->
 <FindBugsFilter>
+    <!-- Spring-managed components retain injected collaborators, while Spring Data/JPA entities expose
+         mapped associations through getters and setters so the framework and domain services can preserve
+         identity and maintain those relationships; defensive copying would break both contracts. -->
+    <Match><Package name="~team\.projectpulse\..*"/><Bug pattern="EI_EXPOSE_REP"/></Match>
+    <Match><Package name="~team\.projectpulse\..*"/><Bug pattern="EI_EXPOSE_REP2"/></Match>
 </FindBugsFilter>

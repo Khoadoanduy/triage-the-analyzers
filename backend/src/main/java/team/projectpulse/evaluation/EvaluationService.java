@@ -254,7 +254,7 @@ public class EvaluationService {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         // If the user is a student, do not include private comments in the summaries
-        if (authentication.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_student"))) {
+        if (authentication.getAuthorities().stream().anyMatch(a -> "ROLE_student".equals(a.getAuthority()))) {
             peerEvaluationAverages.forEach(peerEvaluationAverage -> peerEvaluationAverage.setPrivateComments(null));
         }
 
